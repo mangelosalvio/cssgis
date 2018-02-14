@@ -1,0 +1,49 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+            <!-- <img src="/assets/images/ciss_logo.png" height="28"> -->
+            <h4><b>CISS GIS</b></h4>
+        </a>
+    
+        <button class="button navbar-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a href="#" class="navbar-item">Home</a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+<div class="columns is-fullheight">
+    <div class="column is-two-thirds">
+        <agm-map 
+            [latitude]="lat" 
+            [longitude]="lng" 
+            [zoom]="zoom" 
+            (mapClick)="onChoseLocation($event)" >
+
+            <agm-data-layer
+                [geoJson]="geoJson"></agm-data-layer>
+
+            <agm-marker  
+                *ngFor="let marker of markers"
+                [latitude]="marker.lat" 
+                [longitude]="marker.lng">        
+            </agm-marker>
+
+            <agm-polygon *ngFor="let p of arr_of_paths" [paths]="p">
+                <agm-info-window [disableAutoPan]="true">
+                    Hi, this is the content of the <strong>info window</strong>
+                </agm-info-window>
+            </agm-polygon>
+        </agm-map>
+    </div>
+    <div class="column">
+        <router-outlet></router-outlet>
+    </div>
+</div>

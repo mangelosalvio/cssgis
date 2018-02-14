@@ -1,0 +1,58 @@
+<div class="has-text-centered">
+    <img src="/assets/images/ciss_logo.png">
+    <h5>GLOBAL INFORMATION SYSTEMS</h5>
+</div>
+
+<div class="field">
+    <label class="is-small">Geometry</label>
+    <select [(ngModel)]="geometry" class="input" [disabled]="geometryIsDisabled" >
+        <option value="Point">Point</option>
+        <option value="LineString">Line</option>
+        <option value="Polygon">Polygon</option>
+    </select>
+    
+</div>
+
+    
+<div class="field">
+    <label class="is-small">Longitude</label>
+    <div class="control">
+        <input type="number" class="input is-small"  [(ngModel)]="path.lng" >
+    </div>    
+</div>
+
+<div class="field">
+    <label class="is-small">Latitude</label>
+    <div class="control">
+        <input type="number" class="input is-small" [(ngModel)]="path.lat" >
+    </div>    
+</div>
+<div class="control">
+    <input type="submit" value="Add" (click)="addPath()" class="button is-primary">
+</div>
+
+<table class="table is-fullwidth">
+  <thead>
+    <th style="width:2%;"></th>
+    <th>#</th>
+    <th>LONGITUTE</th>
+    <th>LATITUDE</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of paths; let i = index">
+        <td>
+            <span class="icon">
+                <i class="fas fa-trash"></i>
+              </span>
+        </td>
+        <td>{{ i + 1 }}</td>
+        <td>{{ p[0] }}</td>
+        <td>{{ p[1] }}</td>
+    </tr>
+  </tbody>
+  <div class="control">
+    <input 
+      type="submit" value="Save" class="button" (click)="savePath()" *ngIf="saveButtonVisibility">  
+  </div>
+  
+</table>
