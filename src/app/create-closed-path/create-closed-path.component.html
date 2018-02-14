@@ -41,9 +41,9 @@
   <tbody>
     <tr *ngFor="let p of paths; let i = index">
         <td>
-            <span class="icon">
+            <span class="icon" (click)="deletePath(p)">
                 <i class="fas fa-trash"></i>
-              </span>
+            </span>
         </td>
         <td>{{ i + 1 }}</td>
         <td>{{ p[0] }}</td>

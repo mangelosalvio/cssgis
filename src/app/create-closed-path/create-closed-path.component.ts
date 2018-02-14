@@ -102,4 +102,12 @@ export class CreateClosedPathComponent implements OnInit, OnChanges {
     this.geometryIsDisabled = true;
   }
 
+  deletePath(path : [Number]) : void {
+    const index = this.paths.indexOf(path);
+    console.log(index);
+    if (index > -1) {
+      this.paths.splice(index, 1);
+    }
+  }
+
 }
