@@ -100,13 +100,14 @@ export class MapsComponent implements OnInit{
   
   onChoseLocation(event) {
   
-    this.markers.push({
+    /* this.markers.push({
       lat : event.coords.lat,
       lng : event.coords.lng
-    });
+    }); */
 
-    console.log(this.markers);
-
+    //console.log(this.markers);
+    var coords = [event.coords.lng, event.coords.lat];
+    this.pathService.setCoordinate(coords);
 
   }
 

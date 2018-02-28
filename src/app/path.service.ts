@@ -8,8 +8,12 @@ export class PathService {
 
   private subject = new Subject<Object>();
   private information = new BehaviorSubject<Object>(null);
+  private selectOnMap = new BehaviorSubject<Boolean>(false);
+  private coordinate = new BehaviorSubject<[any]>(null);
   
   informationCast = this.information.asObservable();
+  selectOnMapCast = this.selectOnMap.asObservable();
+  coordinateCast = this.coordinate.asObservable();
 
   setPaths( paths : Object ) {
     this.subject.next(paths);
@@ -23,9 +27,15 @@ export class PathService {
     this.information.next(information);
   }
 
-  getInformation() : Observable<Object> {
-    return this.information.asObservable();
+  setSelectOnMap( selectOnMap : Boolean ) {
+    this.selectOnMap.next(selectOnMap);
   }
+
+  setCoordinate( coordinate : [any] ) {
+    this.coordinate.next(coordinate);
+  }
+
+
 
   constructor() { }
 }

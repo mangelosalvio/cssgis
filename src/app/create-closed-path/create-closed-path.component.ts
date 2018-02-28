@@ -12,12 +12,20 @@ import { SimpleChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 export class CreateClosedPathComponent implements OnInit, OnChanges {
 
   geometry : String = null;
-  path : { lat : number, lng : number } = { lat : 10.811386914692998, lng : 123.03451538085938 };
+  path : { lat : any, lng : any } = { lat : null, lng : null };
   property : { key : String, value: String } = { key : null, value : null };
   paths : any[] = [];
+  selectOnMap : Boolean = false;
 
 
-  constructor(private pathService : PathService, public snackBar : MatSnackBar) { }
+  constructor(private pathService : PathService, public snackBar : MatSnackBar) { 
+    pathService.coordinateCast.subscribe( (coordinate : any) => {
+      if ( this.selectOnMap == true ) {
+        this.path.lng = coordinate[0];
+        this.path.lat = coordinate[1];
+      }
+    });
+  }
 
   ngOnInit() {
   }
@@ -104,13 +112,13 @@ export class CreateClosedPathComponent implements OnInit, OnChanges {
       });
     }
 
+    this.reset();
 
-
-    this.paths = [];
   }
 
-  
-
+  reset() : void {
+    this.paths = [];
+  }
 
   deletePath(path : [Number]) : void {
 
@@ -133,7 +141,7 @@ export class CreateClosedPathComponent implements OnInit, OnChanges {
   saveButtonVisibility() : Boolean {
     if ( this.geometry == "Point" && this.paths.length == 1 ) {
       return true;
-    } else if ( this.geometry == "Line" && this.paths.length >= 2 ) {
+    } else if ( this.geometry == "LineString" && this.paths.length >= 2 ) {
       return true;
     } else if ( this.geometry == "Polygon" && this.paths.length >= 3 ) {
       return true
