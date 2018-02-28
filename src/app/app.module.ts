@@ -21,6 +21,9 @@ import { CreateClosedPathComponent } from './create-closed-path/create-closed-pa
 import { PathService } from './path.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+import { InformationComponent } from './information/information.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BookCreateComponent,
     BookEditComponent,
     MapsComponent,
-    CreateClosedPathComponent
+    CreateClosedPathComponent,
+    InformationComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +42,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
+    AgmSnazzyInfoWindowModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCClygae8_Kpw-FzEwjoVgJQf4A8NfO4Ew'
     })

@@ -7,6 +7,9 @@ import { Observable } from 'rxjs/Observable';
 export class PathService {
 
   private subject = new Subject<Object>();
+  private information = new BehaviorSubject<Object>(null);
+  
+  informationCast = this.information.asObservable();
 
   setPaths( paths : Object ) {
     this.subject.next(paths);
@@ -14,6 +17,14 @@ export class PathService {
 
   getPaths() : Observable<Object> {
     return this.subject.asObservable();
+  }
+
+  setInformation( information : Object ){
+    this.information.next(information);
+  }
+
+  getInformation() : Observable<Object> {
+    return this.information.asObservable();
   }
 
   constructor() { }

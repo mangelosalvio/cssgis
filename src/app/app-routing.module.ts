@@ -8,6 +8,7 @@ import { BookEditComponent } from './book-edit/book-edit.component';
 import { makeDecorator } from '@angular/core/src/util/decorators';
 import { MapsComponent } from './maps/maps.component';
 import { CreateClosedPathComponent } from './create-closed-path/create-closed-path.component';
+import { InformationComponent } from './information/information.component';
 
 const appRoutes: Routes = [
     {
@@ -18,7 +19,11 @@ const appRoutes: Routes = [
         {
           path : 'create-closed-path',
           component : CreateClosedPathComponent
-        }
+        },
+        {
+          path : 'information',
+          component : InformationComponent
+        },
       ]
     },
     {

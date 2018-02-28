@@ -27,8 +27,17 @@
             [zoom]="zoom" 
             (mapClick)="onChoseLocation($event)" >
 
+            <!-- <agm-snazzy-info-window [isOpen]="true" [latitude]="-25.274449" [longitude]="133.775060" [closeWhenOthersOpen]="true">
+                <ng-template>
+                  My first Snazzy Info Window!
+                </ng-template>
+              </agm-snazzy-info-window> -->
+
             <agm-data-layer
-                [geoJson]="geoJson"></agm-data-layer>
+                #agmDataLayer
+                [geoJson]="geoJson"
+                (layerClick)="clicked($event)"
+                [style]="styleFunc"></agm-data-layer>
 
             <agm-marker  
                 *ngFor="let marker of markers"

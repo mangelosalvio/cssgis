@@ -1,0 +1,21 @@
+<div class="has-text-centered">
+  <img src="/assets/images/ciss_logo.png">
+  <h5>GLOBAL INFORMATION SYSTEMS</h5>
+</div>
+
+
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ information.key }}</td>
+      <td>{{ information.value }}</td>
+    </tr>
+  </tbody>
+</table>
+<a [routerLink]="['/maps','create-closed-path']" class="button">Back</a>

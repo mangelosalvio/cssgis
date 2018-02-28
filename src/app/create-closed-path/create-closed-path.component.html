@@ -5,7 +5,7 @@
 
 <div class="field">
     <label class="is-small">Geometry</label>
-    <select [(ngModel)]="geometry" class="input" [disabled]="geometryIsDisabled" >
+    <select [(ngModel)]="geometry" class="input" [disabled]="geometryIsDisabled()" >
         <option value="Point">Point</option>
         <option value="LineString">Line</option>
         <option value="Polygon">Polygon</option>
@@ -21,6 +21,7 @@
     </div>    
 </div>
 
+
 <div class="field">
     <label class="is-small">Latitude</label>
     <div class="control">
@@ -28,7 +29,7 @@
     </div>    
 </div>
 <div class="control">
-    <input type="submit" value="Add" (click)="addPath()" class="button is-primary">
+    <input type="submit" value="Add" (click)="addPath()" class="button is-primary" [disabled]="! addButtonEnabled()">
 </div>
 
 <table class="table is-fullwidth">
@@ -50,9 +51,24 @@
         <td>{{ p[1] }}</td>
     </tr>
   </tbody>
+</table>
+
+<div class="field" *ngIf="saveButtonVisibility()">
+    <label class="is-small">Attribute</label>
+    <div class="control">
+        <input type="text" class="input is-small"  [(ngModel)]="property.key" >
+    </div>    
+  </div>
+
+  <div class="field" *ngIf="saveButtonVisibility()">
+    <label class="is-small">Value</label>
+    <div class="control">
+        <input type="text" class="input is-small"  [(ngModel)]="property.value" >
+    </div>    
+  </div>
+
+
   <div class="control">
     <input 
-      type="submit" value="Save" class="button" (click)="savePath()" *ngIf="saveButtonVisibility">  
+      type="submit" value="Save" class="button" (click)="savePath()" *ngIf="saveButtonVisibility()">  
   </div>
-  
-</table>
