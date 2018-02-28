@@ -93,22 +93,21 @@ export class CreateClosedPathComponent implements OnInit, OnChanges {
       this.pathService.setPaths({
         "type" : this.geometry,
         "coordinates" : this.paths[0],
-        "property" : this.property
+        "property" : Object.assign({},this.property)
       });
-
     
     } else if ( this.geometry == "Polygon" ) {
       this.paths.push(this.paths[0]);
       this.pathService.setPaths({
         "type" : this.geometry,
         "coordinates" : [ this.paths ],
-        "property" : this.property
+        "property" : Object.assign({},this.property)
       });
     } else {
       this.pathService.setPaths({
         "type" : this.geometry,
         "coordinates" : this.paths,
-        "property" : this.property
+        "property" : Object.assign({},this.property)
       });
     }
 
